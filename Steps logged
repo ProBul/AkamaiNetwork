@@ -1,0 +1,22 @@
+List of steps:
+Created an account in AWS
+Lunch an EC2 instances with the configuration provided in the document
+connect to the first machine by using Git Bash from the .pem key location: 'ssh -i MachineA24.pem ubuntu@ec2-13-60-43-171.eu-north-1.compute.amazonaws.com'
+Run 'sudo apt update' to make sure all packages are up to date
+Run 'sudo apt install haproxy' to install haproxy
+Run 'sudo ufw allow 443/tcp' to allow traffic through tcp port 443
+
+Connect to machine B: 'ssh -i MachineA24.pem ubuntu@ec2-16-170-251-112.eu-north-1.compute.amazonaws.com'
+
+Ansible-
+Connect to Ansible: 'ssh -i MachineA24.pem ubuntu@ec2-16-171-10-3.eu-north-1.compute.amazonaws.com'
+
+Update to the lateset packeges and install ansible-
+sudo apt update
+sudo apt install ansible
+
+Create a hosts file for ansible: 'sudo nano /etc/ansible/hosts'
+Change the permisions to writble by sudo chmod command
+[web_servers]
+172.31.46.38
+172.31.43.141
