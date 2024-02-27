@@ -1,22 +1,34 @@
-List of steps:
 Created an account in AWS
-Lunch an EC2 instances with the configuration provided in the document
-connect to the first machine by using Git Bash from the .pem key location: 'ssh -i MachineA24.pem ubuntu@ec2-13-60-43-171.eu-north-1.compute.amazonaws.com'
-Run 'sudo apt update' to make sure all packages are up to date
-Run 'sudo apt install haproxy' to install haproxy
-Run 'sudo ufw allow 443/tcp' to allow traffic through tcp port 443
+Launched 3 EC2 instances with the default VPC and Subnets - Managed to connect.
+Created a new VPC (Virtual Private Cloud) and subnet to set the internal IP according to requirements
+I created security groups according to the requirements.
+Associated the EC2 instances with a VPC (Virtual Private Cloud) and subnet I created - couldn't connect to the servers.
+Changed back to the default VPC and Subnet 
+Connect to the first machine by using Git Bash from the .pem key location: 'ssh -i MachineA24.pem ubuntu@ec2-13-60-43-171.eu-north-1.compute.amazonaws.com'
 
-Connect to machine B: 'ssh -i MachineA24.pem ubuntu@ec2-16-170-251-112.eu-north-1.compute.amazonaws.com'
+Ran the Ansible requirement on machine A from within the machine manually before doing so via Ansible-
+    Run 'sudo apt update' to make sure all packages are up to date
+    Run 'sudo apt install Haproxy' to install haproxy
+    Run 'sudo ufw allow 443/tcp' to allow traffic through TCP port 443
+Manual configuration completed successfully
 
-Ansible-
+I have created a new EC2 machine for Ansible.
 Connect to Ansible: 'ssh -i MachineA24.pem ubuntu@ec2-16-171-10-3.eu-north-1.compute.amazonaws.com'
 
-Update to the lateset packeges and install ansible-
-sudo apt update
-sudo apt install ansible
+Update to the lateset packages and install Ansible-
+Run 'sudo apt update'
+Run 'sudo apt install ansible'
 
 Create a hosts file for ansible: 'sudo nano /etc/ansible/hosts'
-Change the permisions to writble by sudo chmod command
-[web_servers]
-172.31.46.38
-172.31.43.141
+Change the permissions to writable by running 'sudo chmod 700' command
+Create an Ansible inventory file 
+     [web_servers]
+     172.31.46.38
+     172.31.43.141
+Generated SSH Key Pair to be able to communicate with the other EC2 machines passwordless by running 'ssh-keygen -t rsa' (Without providing password )
+Copy the public key to the other by running 'ssh-copy-id user@3.9.146.62', 'ssh-copy-id user@18.132.16.100' - Got an error 'Permission denied (publickey)'
+Tried to debug but couldn't manage to make it work.
+
+
+
+
